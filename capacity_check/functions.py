@@ -6,11 +6,11 @@ from scipy.stats import uniform
 # import NumPy
 import numpy as np
 # import matplotlib
-import matplotlib as mpl
+import matplotlib.pyplot as plt
 
 
 # ............... SIGMOID
-def sigmoid(x,g)
+def sigmoid(x, g):
     sigm = 1./(1+np.exp(-g*x))
     return sigm
 
