@@ -24,5 +24,7 @@ w.resize((N, N))    # resize it to N*N shape
 #    depmat_10 = np.outer(pattern[i][:], 1-pattern[i][:])  # create depression matrix 10 from i and 1-i
 #    depmat_01 = np.outer(1-pattern[i][:], pattern[i][:])  # create depression matrix 01 from i and 1-i
 
+# penis
+
 
 
