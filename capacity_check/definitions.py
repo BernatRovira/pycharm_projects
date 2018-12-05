@@ -1,6 +1,6 @@
 import numpy as np
 # ............... Model parameters
-N = np.float64(3e2)      # Neuron number
+N = np.float64(9e2)      # Neuron number
 beta = 2.44     # parameter for coding level
 gama = 100      # sigmoid steepness
 theta = 0.0    # Treshold

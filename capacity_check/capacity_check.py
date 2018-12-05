@@ -75,11 +75,12 @@ sparse_w = csr_matrix(w)
 # plt.show()
 
 # ............... Stability testing
-n_test = 150
+n_test = int(500)
 test_result = np.zeros(n_test)
-for i in range(int(L)-n_test, int(L)):
-    state = w.dot(pattern[i][:].T)
-    mask_state = state > N*f*gp
-    if np.all(mask_state == pattern[i][:]):
-        test_result[i-n_test] += 1
-print test_result
+for i in range(int(L)-n_test, int(L)):  # for each pattern
+    state = w.dot(pattern[i][:].T)      # compute w_ij*r_j
+    mask_state = state > N*f*gp         # mask to the inh value
+    if np.all(mask_state == pattern[i][:]):  # if the mask coincides with the pattern
+        test_result[i-int(L)+n_test] += 1  # check the pattern as 1 (stable)
+fitxer = open("dades.txt", "a")
+fitxer.write("%d\t%d\n" % (N, test_result.sum()))
