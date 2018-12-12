@@ -1,3 +1,4 @@
+#!/usr/bin/env python!
 # ............... IMPORTS
 # import sparse module from SciPy package
 from scipy import sparse

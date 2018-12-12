@@ -11,14 +11,16 @@ import sys  # to pass arguments to the script
 
 # ............... Model parameters
 N = float(sys.argv[1])  # N is the first argument (argv[0] is filename)
-multiplier = float(sys.argv[2])  # multiplier of q_
+q_ = float(sys.argv[2])  # q_: depression probability
+f = float(sys.argv[3])  # f: coding level
+# multiplier = float(sys.argv[2])  # multiplier of q_
 # N = np.float64(1e2)      # Neuron number (imported as argument)
 beta = 2.44     # parameter for coding level
 gama = 100      # sigmoid steepness
 theta = 0.0    # Treshold
-f = beta*np.log(N)/N     # coding level
+# f = beta*np.log(N)/N     # coding level
 qp = 1  # potentiation probability
-q_ = multiplier*2.57*f/(1-f)   # depression probability
+# q_ = multiplier*2.57*f/(1-f)   # depression probability
 q_01 = q_/2  # depression probability 01
 q_10 = q_/2  # depression probability 10
 L = np.round(np.log(1e-4)/np.log(1-qp*f**2-f*(1-f)*q_))  # Lsteady eq 2.20 thesis draft
@@ -107,8 +109,5 @@ for i in range(int(L)-n_test, int(L)):  # for each pattern
     mask_state = state > N*f*gp         # mask to the inh value
     if np.all(mask_state == pattern[i][:]):  # if the mask coincides with the pattern
         test_result[i-int(L)+n_test] += 1  # check the pattern as 1 (stable)
-if multiplier == 1:
-    fitxer = open("dades.txt", "a")
-elif multiplier == 3:
-    fitxer = open("dades_suboptimal.txt", "a")
+fitxer = open("dades_fixed.txt", "a")
 fitxer.write("%d\t%d\n" % (N, test_result.sum()))
